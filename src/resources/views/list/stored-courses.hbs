@@ -1,0 +1,79 @@
+<div class="mt-4">
+    <h3>Danh sách sản phẩm</h3>
+        <div class="mt-4">
+            <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">price</th>
+                    <th scope="col">brand</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each courses}}
+                    <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.brand}}</td>
+                   
+                    <td>
+                        <a href="/courses/{{this._id}}/edit"  class="btn btn-secondary">Sửa</a>
+                        <a href=""class="btn btn-secondary" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Xóa</a>
+                    </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div id="delete-course-modal" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-course" type="button" class="btn btn-primary">delete</button>
+        <button id="btn-delete-course" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <form name="delete-course-form" method="post"</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var courseId;
+        var deleteForm = document.forms['delete-course-form']
+        var btnDeleteCourse = document.getElementById('btn-delete-course')
+    $('#delete-course-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    courseId = button.data('id');
+  
+    });
+    
+        btnDeleteCourse.onclick = function(){
+            deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+               
+            
+});
+
+</script>

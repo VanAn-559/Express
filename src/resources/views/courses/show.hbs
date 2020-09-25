@@ -1,0 +1,27 @@
+<div class="row">
+    {{!-- {{#each courses}} --}}
+    <div class="col-sm-6 col-lg-3">
+      <div class="card">
+        {{!-- <a href="/courses/{{this.slug}}"> --}}
+        <img src="{{course.image}}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+          {{!-- <a href="/courses/{{this.slug}}"> --}}
+          <h5 class="card-title">{{course.name}}</h5>
+          </a>
+          <h5 class="card-title">{{course.brand}}</h5>
+          </a>
+          <p class="card-text">{{course.price}}</p>
+          <a href="/customer" class="btn btn-primary">Thanh toán</a>
+        </div>
+      </div>
+    </div> 
+   {{!-- {{/each}} --}}
+        </div>
+        <div class="form-group" >
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control"  id="exampleFormControlTextarea1" rows="3">
+        {{course.description}}
+        </textarea>
+        </div>
+
